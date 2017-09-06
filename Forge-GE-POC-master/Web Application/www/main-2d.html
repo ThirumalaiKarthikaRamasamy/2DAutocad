@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Forge GE Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css"  />
+    <link rel="stylesheet"  type="text/css"
+         href="https://developer.api.autodesk.com/viewingservice/v1/viewers/style.min.css?v=2.10">  
+    <link rel="stylesheet" href="dist/css/mystyle.css"> 
+    <link rel="stylesheet" type="text/css" href="dist/other-js/table/jquery.dynatable.css">
+   
+   <script charset="UTF-8" type="text/javascript" 
+        src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0">
+    </script>
+
+    <script src="dist/other-js/jquery-2.1.2.min.js"></script>
+    <script src="dist/other-js/bootstrap.min.js"></script>
+    <script src="dist/other-js/spin.min.js"></script> 
+    <script type="text/javascript" src="dist/other-js/table/jquery.dynatable.js"></script>
+    <script type="text/javascript" src="dist/other-js/table/highcharts.js"></script> 
+    <script src="https://use.fontawesome.com/1d0cb7af2e.js"></script> 
+
+ 
+    <script type="text/javascript"
+         src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=2.10">
+    </script>
+    <script type="text/javascript" 
+        src="https://developer.api.autodesk.com/viewingservice/v1/viewers/three.min.js?v=2.10">
+    </script> 
+     
+    <script src="dist/main-2d/main-2d.min.js"></script> 
+    
+</head>
+
+<body>
+<div class="container-fluid"> 
+  <div class="row">   
+
+      
+        <div class="col-lg-10">          
+            <div id='mapDiv'  style=" height:1000px;"></div> 
+        </div> 
+           <div id="viewer3D_Plan" name="viewer3D_Plan">  
+        </div> 
+
+        <div class="col-lg-2 col-sm-3 col-xs-6 sidebar"> 
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">General</h3>
+              </div>  
+                
+               <button id="btn-Reset" type="button" class="btn btn-large btn-danger" >Reset</button> 
+               <button id="btn-HideView" type="button" class="btn btn-large btn-info">Hide View</button>
+          </div>
+
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Navigation</h3>
+              </div> 
+               <label><h4><input id="lockMap" type="checkbox">Lock Map</h4></label>
+              <input type="text" id="geowidth" class="form-control" placeholder="geo scale width (km)" value="">
+              <input type="text" id="geoheight" class="form-control" placeholder="geo scale height (km)" value=""> 
+
+              <input type="text" id="longitude" class="form-control" placeholder="longitude" value="">
+              <input type="text" id="latitude" class="form-control" placeholder="latitude" value="">
+              <button id="btn-location" type="button" class="btn btn-large btn-info">GEO Location</button>               
+
+              <input type="text" id="address" class="form-control" placeholder="address" value="">
+               <button id="btn-get-address" type="button" class="btn btn-large btn-success">GEO Address</button>               
+          </div>
+          
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Transform</h3>
+              </div> 
+
+             <div class="radio">
+                   <label> 
+                     <input type="radio" name="optionsRadios" id="plant" value="plant">
+                      Plant
+                     </label>
+               </div>
+
+               <div class="radio">
+                    <label> 
+                    <input type="radio" name="optionsRadios" id="component1" value="component1" checked>
+                       Component 1
+                    </label>
+                </div>
+               <div class="radio">
+                   <label> 
+                     <input type="radio" name="optionsRadios" id="component2" value="component2">
+                      Component 2
+                     </label>
+               </div>  
+
+                <input type="text" id="transStep" class="form-control" placeholder="Text input" value="0.1">
+
+                <button id="btn-AddX" type="button" class="btn btn-small btn-warning" >X+step</button>
+                <button id="btn-AddY" type="button" class="btn btn-small btn-warning" >Y+step</button>
+                <button id="btn-MinusX" type="button" class="btn btn-small btn-warning" >X-step</button>
+                <button id="btn-MinusY" type="button" class="btn btn-small btn-warning" >Y-step</button> 
+
+                <input type="text" id="rotStep" class="form-control" placeholder="Text input" value="0.1">
+                <button id="btn-Clockwise" type="button" class="btn btn-small btn-primary" >Clockwise</button>
+                <button id="btn-antiClockwise" type="button" class="btn btn-small btn-primary" >CounterClockwise</button>
+              
+          </div>
+
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New Component</h3>
+                </div> 
+            <br>
+             <a class="btn btn-primary btn-small" id="btn-NewComp">Add</a>
+             <br>
+             <ul class="inputs-list" id="newCompList" > 
+             </ul>
+
+          </div>  
+
+           <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Linkage</h3>
+                </div> 
+            <br>
+            <label><h4><input id="linkage" type="checkbox">Show</h4></label>
+          </div>  
+          
+
+          <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Update</h1>
+                </div> 
+            <br>
+            <button id="btn-newPublish" type="button" class="btn btn-large btn-info" >Publish</button>
+            <button id="btn-share" type="button" class="btn btn-large btn-info" >Share</button>
+            
+            <div  id="loading"></div>
+            <label id='translateStatus'>status</label> 
+            <br>
+            <button id="btn-download" type="button" class="btn btn-large btn-success" >Download</button>
+          </div>
+ 
+ 
+           
+
+     </div>  
+
+    </div>  
+  </div> 
+
+  <!--<div class="row">
+    <div class="col-lg-10">
+         <h1 class="sub-header text-center ">Transform List</h1>
+          <table id="trans-list" class="table table-bordered">
+            <thead>
+              <th data-dynatable-column="dbid">DBID</th>
+                 <th data-dynatable-column="compname">Component Name</th>
+                <th data-dynatable-column="trans">Translation</th>
+                <th data-dynatable-column="rot">Rotation</th>
+              </thead>
+            <tbody>
+            </tbody>
+          </table>
+    </div>-->
+
+    
+
+
+    </div>
+
+</div> 
+
+
+</body>
+
+</html>

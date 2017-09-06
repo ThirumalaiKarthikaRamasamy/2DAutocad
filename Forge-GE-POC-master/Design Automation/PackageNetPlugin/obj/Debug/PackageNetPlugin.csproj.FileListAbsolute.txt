@@ -1,0 +1,12 @@
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\bin\PackageContents.xml
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\bin\PackageNetPlugin.dll
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\bin\PackageNetPlugin.pdb
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.dll
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.pdb
+D:\00-Forge\MySamples\Transform-Navisworks\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.csprojResolveAssemblyReference.cache
+D:\00-Forge\MySamples\Forge-GE\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.csprojResolveAssemblyReference.cache
+D:\00-Forge\MySamples\Forge-GE\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.dll
+D:\00-Forge\MySamples\Forge-GE\Design Automation\PackageNetPlugin\obj\Debug\PackageNetPlugin.pdb
+D:\00-Forge\MySamples\Forge-GE\Design Automation\bin\PackageContents.xml
+D:\00-Forge\MySamples\Forge-GE\Design Automation\bin\PackageNetPlugin.dll
+D:\00-Forge\MySamples\Forge-GE\Design Automation\bin\PackageNetPlugin.pdb
